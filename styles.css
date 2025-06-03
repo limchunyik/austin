@@ -1,0 +1,57 @@
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: Inter, sans-serif;
+    }
+}
+
+* {
+    background-color: #1e1e1e;
+    color: #fff;
+    font-weight: 200;
+}
+
+.intro-section {
+    display: flex;
+    /* stack items vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* sets height to 100% of viewport height */
+    height: 100vh;
+}   
+
+.intro-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* scales with viewport */
+    text-align: center; /* centers text on smaller screens */
+    font-feature-settings: 'tnum' 1;
+}
+ 
+.intro-name {
+    font-weight: 400;   
+}
+
+.intro-image {
+    /* maintain aspect ratio */
+    width: 100%;
+    height: auto;
+    
+    max-width: 600px;
+    border-radius: 2%;
+    margin: 1rem;
+    border: 1px solid white;
+}
+
+.links {
+    display: flex;
+    gap: 2rem;
+}
+
+.links a {
+    text-decoration: none;
+}
