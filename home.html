@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>austin's space</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("loaded");
-      });
-    </script>
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <div class="intro-section">
-        <div class="intro-title">
-          hi! <span class="intro-name"> i'm austin.</span>
-        </div>
-        <img class="intro-image" src="images/austin.jpg" alt="austin" />
-        <div class="links">
-          <a href="about.html">about</a>
-          <a href="projects.html">projects</a>
-          <a href="cubing.html">cubing</a>
-          <a href="contact.html">contact</a>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>austin's space</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("loaded");
+    });
+  </script>
+</head>
+
+<body>
+  <canvas id="starfield"></canvas>
+  <main>
+    <div class="intro-section">
+      <div class="intro-title">
+        hi! <span class="intro-name"> i'm austin.</span>
       </div>
-    </main>
-  </body>
+      <img class="intro-image" src="images/austin.jpg" alt="austin" />
+      <div class="links">
+        <a href="about.html">about</a>
+        <a href="projects.html">projects</a>
+        <a href="cubing.html">cubing</a>
+        <a href="contact.html">contact</a>
+      </div>
+    </div>
+  </main>
+  <script>
+    // minimal starfield background
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 0.7 + 0.3,
+          o: Math.random() * 0.5 + 0.5,
+        });
+      }
+    }
+    createStars(window.innerWidth / 2);
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        ctx.globalAlpha = s.o;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('resize', () => createStars(window.innerWidth / 2));
+  </script>
+</body>
+
 </html>
