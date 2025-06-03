@@ -109,11 +109,6 @@ body.loaded {
     outline: none;
 }
 
-.links a:hover::after,
-.links a:focus::after {
-    width: 100%;
-}
-
 @media (max-width: 600px) {
     .intro-section {
         padding: 1.5rem 0.5rem;
