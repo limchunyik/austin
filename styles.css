@@ -23,7 +23,6 @@ body {
     background: #1e1e1e;
     opacity: 0;
     transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-    /* No need for z-index or position here */
 }
 
 body.loaded {
@@ -54,7 +53,6 @@ main {
     height: 100vh;
     max-width: 480px;
     margin: auto;
-    /* No z-index needed */
 }
 
 .intro-title {
