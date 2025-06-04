@@ -21,16 +21,12 @@
 body {
     min-height: 100vh;
     background: #1e1e1e;
-    /* start invisible for fade-in effect */
     opacity: 0;
-    /* smoothly fades in the page */
     transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    z-index: 1;
+    /* No need for z-index or position here */
 }
 
 body.loaded {
-    /* when JS adds the loaded class, the body fades in */
     opacity: 1;
 }
 
@@ -40,10 +36,14 @@ body.loaded {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* sits behind all other content */
     z-index: 0;
     display: block;
     pointer-events: none;
+}
+
+main {
+    position: relative;
+    z-index: 1;
 }
 
 .intro-section {
@@ -54,8 +54,7 @@ body.loaded {
     height: 100vh;
     max-width: 480px;
     margin: auto;
-    position: relative;
-    z-index: 1;
+    /* No z-index needed */
 }
 
 .intro-title {
